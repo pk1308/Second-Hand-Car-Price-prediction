@@ -1,11 +1,15 @@
 import logging as lg
 from datetime import datetime
 import os
-from SRC.utils.constants import  LOG_DIR, ARIFACTS, CURRENT_TIME_STAMP
+from SRC.utils import constants as cn
+
 
 
 CURRENT_TIME_STAMP = f"{datetime.now().strftime('%Y-%m-%d')}"
 ARTIFACTS = os.path.join(os.getcwd(), "Artifacts")
+
+LOG_DIR  = os.path.join(ARTIFACTS, "LOGS")
+os.makedirs(LOG_DIR, exist_ok=True)
 
 
 def APP_Logger(name, level="DEBUG" ):

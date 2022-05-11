@@ -21,7 +21,9 @@ ARIFACTS_DIR = os.path.join(ROOT_DIR,"Artifacts")
 os.makedirs(ARIFACTS_DIR , exist_ok = True)
 lg.info(f"Artifacts Directory: {ARIFACTS_DIR}")
 
-LOG_DIR = os.path.join(ARIFACTS_DIR "LOGS")
+
+LOG_DIR = os.path.join(ARIFACTS_DIR, "LOGS")
+os.makedirs(LOG_DIR, exist_ok=True)
 
 # dump Directory
 DUMP_DIR = os.path.join(ARIFACTS_DIR, 'DATA_DUMP')
