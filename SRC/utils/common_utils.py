@@ -2,6 +2,7 @@
 import pandas as pd 
 from SRC.utils import constants
 import os
+import glob
 from datetime import datetime
 import logging as lg
 from SRC.utils.logger import APP_Logger
@@ -66,5 +67,17 @@ def reduce_memory_usage(df, deep=True, verbose=False, categories=True):
 def memory_usage_mb(df, *args, **kwargs):
     """Dataframe memory usage in MB. """
     return df.memory_usage(*args, **kwargs).sum() / 1024**2
+
+
+def get_latest_file(dir : str ):
+    
+    """ This function takes the a dir and get bthe latest modified file"""
+    list_of_files = glob.glob(dir +"/*") # * means all if need specific format then *.csv
+    latest_file = max(list_of_files, key=os.path.getmtime)
+    return latest_file
+
+
+
+    
 
 
