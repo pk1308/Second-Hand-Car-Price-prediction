@@ -1,21 +1,16 @@
 import logging as lg
 from datetime import datetime
 import os
-from SRC.utils import constants as cn
+from SRC.utils import constants as CN
 
 
 
-CURRENT_TIME_STAMP = f"{datetime.now().strftime('%Y-%m-%d')}"
-ARTIFACTS = os.path.join(os.getcwd(), "Artifacts")
-
-LOG_DIR  = os.path.join(ARTIFACTS, "LOGS")
-os.makedirs(LOG_DIR, exist_ok=True)
 
 
 def APP_Logger(name, level="DEBUG" ):
     logger = lg.getLogger(name)
     FILE_NAME = f"log_{name}.log"
-    LOG_FILE = os.path.join(LOG_DIR, FILE_NAME)
+    LOG_FILE = os.path.join(CN.LOG_DIR, FILE_NAME)
     logger.setLevel(lg.DEBUG)
     level = level
     # Creating Formatters

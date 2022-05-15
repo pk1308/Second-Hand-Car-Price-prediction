@@ -12,7 +12,7 @@ lg = APP_Logger(os.path.basename(__file__))
 
 
 def get_null_percent(df: pd.DataFrame) -> pd.DataFrame:
-    """ Funstion take a dataframe and return the percentage of null values in each column """
+    """ Function take a dataframe and return the percentage of null values in each column """
     null_values=df.isnull().sum()
     null_values=pd.DataFrame(null_values,columns=['null'])
     j=1
@@ -24,14 +24,14 @@ def get_null_percent(df: pd.DataFrame) -> pd.DataFrame:
 def sep_column_dtypes(df):
     """ Separate the dataframe into categorical and numerical columns """
 
-    catgeories_columns = df.select_dtypes(include=['category']).columns.tolist()
+    categories_columns = df.select_dtypes(include=['category']).columns.tolist()
     boolan_columns = df.select_dtypes(include=['bool']).columns.tolist()
     numeric_columns = df.select_dtypes(include=['int32', 'int16', 'int8' ,  'float32']).columns.tolist()
-    lg.debug(f"Categorical Columns: {catgeories_columns}")
+    lg.debug(f"Categorical Columns: {categories_columns}")
     lg.debug(f"Boolean Columns: {boolan_columns}")
     lg.debug(f"Numerical Columns: {numeric_columns}")
 
-    return catgeories_columns, boolan_columns, numeric_columns 
+    return categories_columns, boolan_columns, numeric_columns 
 
 
 def reduce_memory_usage(df, deep=True, verbose=False, categories=True):
@@ -71,7 +71,7 @@ def memory_usage_mb(df, *args, **kwargs):
 
 def get_latest_file(dir : str ):
     
-    """ This function takes the a dir and get bthe latest modified file"""
+    """ This function takes the a dir and returns the latest modified file"""
     list_of_files = glob.glob(dir +"/*") # * means all if need specific format then *.csv
     latest_file = max(list_of_files, key=os.path.getmtime)
     return latest_file
